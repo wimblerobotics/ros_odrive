@@ -23,10 +23,6 @@ ament_auto_add_library(
   src/odrive_hardware_interface.cpp
 )
 
-ament_target_dependencies(odrive_ros2_control_plugin
-  rclcpp
-)
-
 pluginlib_export_plugin_description_file(hardware_interface odrive_hardware_interface.xml)
 
 target_compile_features(odrive_ros2_control_plugin PRIVATE cxx_std_20)

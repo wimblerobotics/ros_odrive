@@ -17,7 +17,8 @@ public:
     using return_type = hardware_interface::return_type;
     using State = rclcpp_lifecycle::State;
 
-    CallbackReturn on_init(const hardware_interface::HardwareInfo& info) override;
+    CallbackReturn on_init(
+        const hardware_interface::HardwareComponentInterfaceParams& params) override;
     CallbackReturn on_configure(const State& previous_state) override;
     CallbackReturn on_cleanup(const State& previous_state) override;
     CallbackReturn on_activate(const State& previous_state) override;
@@ -107,8 +108,9 @@ using namespace odrive_ros2_control;
 using hardware_interface::CallbackReturn;
 using hardware_interface::return_type;
 
-CallbackReturn ODriveHardwareInterface::on_init(const hardware_interface::HardwareInfo& info) {
-    if (hardware_interface::SystemInterface::on_init(info) != CallbackReturn::SUCCESS) {
+CallbackReturn ODriveHardwareInterface::on_init(
+    const hardware_interface::HardwareComponentInterfaceParams& params) {
+    if (hardware_interface::SystemInterface::on_init(params) != CallbackReturn::SUCCESS) {
         return CallbackReturn::ERROR;
     }
 
